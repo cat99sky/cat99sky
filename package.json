@@ -1,0 +1,31 @@
+{
+  "name": "cat99sky",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*"
+    ],
+    "nohoist": [
+      "backend/**"
+    ]
+  },
+  "scripts": {
+    "dev": "concurrently \"yarn workspace backend dev\" \"yarn workspace storefront dev\"",
+    "dev:backend": "yarn workspace backend dev",
+    "dev:storefront": "yarn workspace storefront dev",
+    "build": "yarn workspace backend build && yarn workspace storefront build",
+    "build:backend": "yarn workspace backend build",
+    "build:storefront": "yarn workspace storefront build",
+    "lint": "yarn workspace storefront lint",
+    "test": "yarn workspace backend test:unit",
+    "db:migrate": "yarn workspace backend predeploy",
+    "seed": "yarn workspace backend seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
